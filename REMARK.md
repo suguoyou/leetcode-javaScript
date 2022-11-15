@@ -6,3 +6,5 @@
 * removeDuplicates
 * romanToInt
 * twoSum
+* searchInsert
+* lengthOfLastWord
