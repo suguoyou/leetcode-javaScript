@@ -9,3 +9,4 @@
 * searchInsert
 * lengthOfLastWord
 * plusOne
+* maxArea
