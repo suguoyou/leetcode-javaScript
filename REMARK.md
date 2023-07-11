@@ -11,3 +11,6 @@
 * plusOne
 * maxArea
 * threeSum
+* threeSumClosest
+* searchRange
+* argumentsLength

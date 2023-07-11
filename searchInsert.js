@@ -17,10 +17,19 @@
 //   }
 // };
 var searchInsert = function (nums, target) {
-  const index = nums.findIndex((item) => item >= target);
-  return index > -1 ? index : nums.length;
+  let left = 0
+  let right = nums.length - 1
+  let index = -1
+  while(left <= right) {
+    if (nums[left] >= target) {
+      index = left
+      break;
+    }
+    left++
+  }
+  return index == -1 ? nums.length : index
 };
-nums = [1, 3, 5, 6];
+nums = [1, 3];
 
-let index = searchInsert(nums, 0);
+let index = searchInsert(nums, 2);
 console.log(index);
