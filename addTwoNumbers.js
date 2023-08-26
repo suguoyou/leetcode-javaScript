@@ -1,25 +1,22 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */
-var addTwoNumbers = function (l1, l2) {
-  if (Array.isArray(l1) && Array.isArray(l2)) {
-    var num1 = Number(l1.reverse().join(""));
-    var num2 = Number(l2.reverse().join(""));
-    let num = num1 + num2 + "";
-    return num.split("").reverse();
+function printList() {
+  var strList;
+  var queue = new Array;
+  
+  queue.push("string1");
+  queue.push("zzz");
+  queue.push("another string");
+  queue.push("zzz");
+  queue.push("JavaScript");    
+  
+  queue.reverse();
+  queue.pop();
+  queue.reverse();
+  queue.pop();
+  queue.sort();
+  for (var i = 0; i < queue.length; i++) {
+     if (i != queue.length - 1)
+       console.log(queue[i] + ",");
+     else
+       console.log(queue[i]);
   }
-};
-
-var l1 = [9, 9, 9, 9, 9, 9, 9],
-  l2 = [9, 9, 9, 9];
-
-console.log(addTwoNumbers(l1, l2));
+}
