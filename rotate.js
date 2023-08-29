@@ -25,8 +25,15 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var rotate = function(nums, k) {
-    let arr = nums.splice(nums.length - k, k)
-    nums = arr.concat(nums)
+    // let arr = nums.splice(nums.length - k, k)
+    // nums = arr.concat(nums)
+    // return nums
+    let length = nums.length
+    for(let i = 1 ; i <= k; i++) {
+        let index = nums[length - 1]
+        nums.pop()
+        nums.unshift(index)
+    }
     return nums
 };
 
