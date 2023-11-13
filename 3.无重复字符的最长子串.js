@@ -10,21 +10,17 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-    let arr = s.split('')
-    let str = ''
-    let newArr = []
-    for (let i = 0; i < arr.length; i++) {
-        let index = str.indexOf(arr[i])
-        if (index == -1) {
-            str += arr[i]
-        } else {
-            str = str.substring(index + 1) + arr[i]
+    let maxLength = 0, slow = 0
+    let map = new Map()
+    for (let i = 0; i < s.length; i++) {
+        if (map.has(s[i]) && map.get(s[i]) >= slow) {
+            slow = map.get(s[i]) + 1
         }
-        newArr.push(str)
+
+        maxLength = Math.max(i - slow + 1, maxLength)
+        map.set(s[i], i)
     }
-    return newArr.reduce((acc, cur) => {
-        return cur.length > acc.length ? cur : acc
-    }, '').length
+    return maxLength
 };
 
 console.log(lengthOfLongestSubstring('abcabcbb'))
