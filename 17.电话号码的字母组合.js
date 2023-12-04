@@ -20,26 +20,21 @@ var letterCombinations = function (digits) {
         8: ["t", "u", "v"],
         9: ["w", "x", "y", "z"],
     }
-    const res = [];
-
-    if (!digits) return res;
-    const combination = (level, digits, str = '') => {
-        if (level === digits.length) {
-            res.push(str)
-            return
+    const arr = [];
+    if (!digits) return []
+    const combinations = (str, digits = '') => {
+        if (!digits) return arr.push(str)
+        const firstStr = digits.slice(0, 1)
+        const newArr = map[firstStr]
+        for (let i = 0; i < newArr.length; i++) {
+            combinations(str + newArr[i], digits.substring(1))
         }
-        const digitsArr = [...digits]
-        const currentMap = map[digitsArr[level]]
-        console.log('digitsArr', digitsArr, currentMap);
-        currentMap.forEach(c => {
-            combination(level + 1, digits, str + c)
-        })
     }
-    combination(0, digits, '');
-    return res
+    combinations('', digits)
+    return arr
 };
 
-console.log('letterCombinations', letterCombinations('23'));
+letterCombinations('398')
 
 // @lc code=end
 
