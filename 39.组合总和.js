@@ -12,21 +12,24 @@
  */
 var combinationSum = function (candidates, target) {
     let result = [];
-    (function helper(candidates, target, index, subset, result) {
-        if (target == 0) { //基线条件
-            result.push([...subset])
-        } else if (target > 0 && index < candidates.length) {
-            helper(candidates, target, index + 1, subset, result); // 不将数字添加到子集
-
-            subset.push(candidates[index]); // 将数字添加到子集中
-            helper(candidates, target - candidates[index], index, subset, result);
-            subset.pop();
+    const helper = (setArr, index, sum) => {
+        if (sum >= target) {
+            if (sum === target) {
+                result.push([...setArr])
+            }
+            return
         }
-    })(candidates, target, 0, [], result)
-    console.log('result', result);
+        helper(setArr, index, sum + candidates[index])
+        if (index + 1 < candidates.length ) {
+            setArr.push(candidates[index])
+            helper(setArr, index + 1, sum)
+            setArr.pop()
+        }
+    }
+    helper([], 0, 0)
     return result;
 };
 
-combinationSum([2, 3, 6, 7], 7)
+combinationSum([1, 2, 3, 4, 5], 7)
 // @lc code=end
 
