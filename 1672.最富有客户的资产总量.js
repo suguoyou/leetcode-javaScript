@@ -10,14 +10,13 @@
  * @return {number}
  */
 var maximumWealth = function (accounts) {
-
-    const list = accounts.reduce((acc, cur) => {
-        acc.push(
-            cur.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-        )
-        return acc
-    }, [])
-    return Math.max(...list)
+    let total = 0
+    for (let i = 0; i < accounts.length; i++) {
+        let sum = 0
+        sum = accounts[i].reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+        total = Math.max(total, sum)
+    }
+    return total
 };
 
 maximumWealth([[1, 5], [7, 3], [3, 5]])
